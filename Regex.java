@@ -11,6 +11,7 @@ public class Regex {
 		lastName();
 		emailId();
 		mobileNo();
+		password();
 	}
 	
 	private static void firstName() {
@@ -65,6 +66,24 @@ public class Regex {
 			System.out.println("Mobile no. is correct ");
 		} else {
 			System.out.println("Mobile no. is incorrect ");
+		}
+	}
+	
+	private static void password() {
+		Scanner scr = new Scanner(System.in);
+		System.out.println("Enter the password : ");
+		String name = scr.nextLine();
+		String regexPassward = "^(?=.*[0-9])" //UC7 numeric
+	            + "(?=.*[a-z])(?=.*[A-Z])" //UC6 Upper case
+	            + "(?=.*[@#$%^&+=])" //UC8 special char
+	            + "(?=\\S+$).{8,20}$"; //UC5 minimum 8 char 
+		
+		boolean validateEmail = Pattern.matches(regexPassward, name);   
+		
+		if (validateEmail) {
+			System.out.println("password is correct ");
+		} else {
+			System.out.println("Password is incorrect ");
 		}
 	}
 }
